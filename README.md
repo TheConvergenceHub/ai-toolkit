@@ -1,5 +1,11 @@
 # AI Toolkit — Free, Private, In-Browser Tools
 
+[![License: MIT](https://img.shields.io/github/license/TheConvergenceHub/ai-toolkit)](./LICENSE)
+![No backend](https://img.shields.io/badge/backend-none-brightgreen)
+![No build step](https://img.shields.io/badge/build%20step-none-blue)
+[![Live tools](https://img.shields.io/badge/live-theconvergencehub.com-C9A24B)](https://theconvergencehub.com/ai-toolkit.html)
+[![GitHub stars](https://img.shields.io/github/stars/TheConvergenceHub/ai-toolkit?style=social)](https://github.com/TheConvergenceHub/ai-toolkit/stargazers)
+
 Five small utilities that solve annoying everyday file problems — remove a background, merge PDFs, convert HEIC photos, resize/compress an image, generate a QR code — with **zero backend**. Every byte of processing happens on your own device, in your own browser tab. Nothing is uploaded, nothing is stored, nothing is seen by anyone else.
 
 Built and maintained by **[The Convergence](https://theconvergencehub.com)**. Try them live, no install required:
@@ -37,7 +43,7 @@ Plain HTML/CSS/JS, no build step, no framework. Each tool is a single self-conta
 No build step — just serve the folder so relative paths resolve correctly (opening the file directly via `file://` will work for the core free flow in most browsers, but a local server is more reliable):
 
 ```bash
-git clone https://github.com/<your-username>/ai-toolkit.git
+git clone https://github.com/TheConvergenceHub/ai-toolkit.git
 cd ai-toolkit
 python3 -m http.server 8080
 # then open http://localhost:8080/tools/remove-background.html
@@ -50,6 +56,8 @@ Every tool's core function is free, forever, for everyone — that will never ch
 ## Contributing
 
 Issues and pull requests are welcome — new tools, bug fixes, accessibility improvements, or a translation are all fair game. Keep new tools consistent with the pattern: a single HTML file under `/tools`, zero backend, all processing on-device.
+
+If this saved you a step, a ⭐ star helps other people find it.
 
 ## License
 
