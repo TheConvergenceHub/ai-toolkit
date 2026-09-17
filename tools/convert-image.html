@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convert an Image (HEIC, PNG, JPG, WebP) — Free, In Your Browser | The Convergence</title>
+<meta name="description" content="Convert HEIC, PNG, JPG, or WebP images to the format you need. Free, no upload — runs entirely in your browser. No account, no watermark.">
+<meta property="og:title" content="Convert an Image (HEIC, PNG, JPG, WebP) — Free, In Your Browser">
+<meta property="og:description" content="Convert HEIC, PNG, JPG, or WebP images to the format you need. Free, no upload — runs entirely in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theconvergencehub.com/convert-image.html">
+<meta property="og:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<meta property="og:site_name" content="The Convergence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convert an Image (HEIC, PNG, JPG, WebP) — Free, In Your Browser">
+<meta name="twitter:description" content="Convert HEIC, PNG, JPG, or WebP images to the format you need. Free, no upload — runs entirely in your browser.">
+<meta name="twitter:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<link rel="stylesheet" href="../shared/styles.css">
+<link rel="icon" type="image/png" href="https://theconvergencehub.com/favicon.png">
+<link rel="canonical" href="https://theconvergencehub.com/convert-image.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Convert Image",
+  "applicationCategory": "PhotoEditingApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "description": "Convert HEIC, PNG, JPG, or WebP images to the format you need. Free, no upload — runs entirely in your browser.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "The Convergence" },
+  "url": "https://theconvergencehub.com/convert-image.html"
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="wrap" id="main" role="main">
+  <nav class="nav">
+    <a class="brand" href="https://theconvergencehub.com/">
+      <svg class="brand-mark" viewBox="0 0 24 24"><path d="M2 18 L9 11 L14 15 L22 5" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/><path d="M2 6 L9 12 L14 9 L22 17" fill="none" stroke="#3ED6C5" stroke-width="2" stroke-linecap="round"/></svg>
+      The Convergence
+    </a>
+    <div class="nav-links">
+      <a href="https://theconvergencehub.com/sponsors.html">Sponsors</a>
+      <select class="planet-jump" onchange="if(this.value) window.location.href=this.value">
+        <option value="">Jump to a planet…</option>
+        <option value="/ai-and-robotics.html">AI &amp; Robotics</option>
+        <option value="/health.html">Health &amp; Wellness</option>
+        <option value="/sports.html">Sports</option>
+        <option value="/entertainment-movies-tv.html">Entertainment</option>
+        <option value="/breaking-news.html">Breaking News</option>
+        <option value="/finance-investing.html">Finance &amp; Investing</option>
+        <option value="/gaming.html">Gaming</option>
+        <option value="/automotive.html">Automotive</option>
+        <option value="/shopping.html">Shopping</option>
+        <option value="/business.html">Business</option>
+        <option value="/archive.html">Archive</option>
+        <option value="/real-estate-housing.html">Real Estate &amp; Housing</option>
+        <option value="/true-crime.html">True Crime</option>
+        <option value="/natural-medicine.html">Alternative &amp; Natural Medicine</option>
+        <option value="/nanotechnology.html">Nanotechnology</option>
+        <option value="/travel.html">Travel</option>
+      </select>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="breadcrumb"><a href="https://theconvergencehub.com/">Home</a> / <a href="https://theconvergencehub.com/ai-and-robotics.html">AI &amp; Robotics</a> / <a href="https://theconvergencehub.com/ai-toolkit.html">AI Toolkit</a> / Convert Image</div>
+    <h1 style="font-size: 2rem;">Convert an image — free</h1>
+    <p class="dek">HEIC (iPhone photos), PNG, JPG, or WebP — convert between them in your browser. No upload, no account, no watermark.</p>
+  </header>
+
+  <div class="tool-shell">
+    <div class="tool-field-row">
+      <label>Convert to:
+        <select id="target-format">
+          <option value="image/jpeg">JPG</option>
+          <option value="image/png">PNG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </label>
+      <label id="quality-row">Quality: <input type="range" id="quality" min="0.4" max="1" step="0.05" value="0.9"> <span id="quality-val">90%</span></label>
+    </div>
+
+    <div class="drop-zone" id="drop-zone">
+      <p class="drop-title">Drop image(s) here, or click to choose</p>
+      <p class="drop-sub">HEIC, PNG, JPG, WebP · processed entirely on your device</p>
+      <input type="file" id="file-input" accept="image/*,.heic,.heif" multiple>
+    </div>
+
+    <ul class="tool-file-list" id="file-list" style="display:none;"></ul>
+    <div id="pricing-banner"></div>
+    <div class="status-line" id="status-line"></div>
+    <div class="progress-track" id="progress-track" style="display:none;"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <div class="preview-grid" id="preview-grid" style="display:none;">
+      <div class="preview-pane"><div class="label">Original</div><img id="original-img" alt="Original"></div>
+      <div class="preview-pane"><div class="label">Converted</div><img id="result-img" alt="Converted" style="display:none;"></div>
+    </div>
+
+    <div class="privacy-note">
+      <span>🔒</span>
+      <span>Your images never leave your device. Conversion happens entirely in your browser.</span>
+    </div>
+  </div>
+
+  <article class="body" style="margin-top: 40px;">
+    <h2>Why this exists</h2>
+    <p>iPhones save photos as HEIC by default, which plenty of sites and apps still can't open. This converts HEIC (and PNG, JPG, WebP) to whichever format you actually need, without installing anything.</p>
+  </article>
+
+  <footer style="margin-top: 40px;">
+    THE CONVERGENCE · theconvergencehub.com · <a href="https://theconvergencehub.com/about.html" style="color: var(--slate);">About</a> · <a href="https://theconvergencehub.com/privacy-policy.html" style="color: var(--slate);">Privacy</a> · <a href="https://theconvergencehub.com/terms-of-service.html" style="color: var(--slate);">Terms</a> · <a href="https://www.youtube.com/@THECONVERGENCEHUB" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">YouTube</a> · <a href="https://www.tiktok.com/@theconvergencehub" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">TikTok</a> · <a href="https://www.facebook.com/profile.php?id=61593516752054" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">Facebook</a>
+  </footer>
+</div>
+
+<script src="../shared/toolkit-access.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+<script>
+const TOOL_SLUG = 'convert-image';
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const fileListEl = document.getElementById('file-list');
+const pricingBannerEl = document.getElementById('pricing-banner');
+const statusLine = document.getElementById('status-line');
+const progressTrack = document.getElementById('progress-track');
+const progressFill = document.getElementById('progress-fill');
+const previewGrid = document.getElementById('preview-grid');
+const originalImg = document.getElementById('original-img');
+const resultImg = document.getElementById('result-img');
+const targetFormat = document.getElementById('target-format');
+const qualityInput = document.getElementById('quality');
+const qualityVal = document.getElementById('quality-val');
+const qualityRow = document.getElementById('quality-row');
+
+qualityInput.addEventListener('input', () => { qualityVal.textContent = Math.round(qualityInput.value * 100) + '%'; });
+targetFormat.addEventListener('change', () => { qualityRow.style.display = targetFormat.value === 'image/png' ? 'none' : 'flex'; });
+
+renderBanner();
+function renderBanner() { toolkitRenderPricingBanner(pricingBannerEl, TOOL_SLUG, 'Convert Image', renderBanner); }
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files.length) handleFiles([...e.dataTransfer.files]);
+});
+fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFiles([...e.target.files]); fileInput.value = ''; });
+
+function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function isHeic(file) {
+  const n = file.name.toLowerCase();
+  return file.type === 'image/heic' || file.type === 'image/heif' || n.endsWith('.heic') || n.endsWith('.heif');
+}
+
+async function handleFiles(files) {
+  fileListEl.style.display = 'block';
+  fileListEl.innerHTML = '';
+  const unlocked = toolkitHasAccess(TOOL_SLUG);
+  const rows = files.map((file, i) => {
+    const li = document.createElement('li');
+    const locked = i > 0 && !unlocked;
+    li.innerHTML = '<span class="file-name">' + escapeHtml(file.name) + '</span><span class="file-status">' +
+      (locked ? '<span class="pro-lock-note">🔒 batch is a Pro extra</span>' : 'waiting…') + '</span>';
+    fileListEl.appendChild(li);
+    return { file, li, locked };
+  });
+
+  for (const row of rows) {
+    if (row.locked) continue;
+    await convertOne(row.file, row.li);
+  }
+  renderBanner();
+}
+
+async function convertOne(file, listItemEl) {
+  const statusSpan = listItemEl.querySelector('.file-status');
+  statusSpan.textContent = 'converting…';
+  previewGrid.style.display = 'grid';
+  resultImg.style.display = 'none';
+  progressTrack.style.display = 'block';
+  progressFill.style.width = '20%';
+  statusLine.textContent = 'Converting ' + escapeHtml(file.name) + '…';
+
+  try {
+    let sourceBlob = file;
+    if (isHeic(file)) {
+      statusLine.textContent = 'Reading HEIC photo…';
+      sourceBlob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.92 });
+      if (Array.isArray(sourceBlob)) sourceBlob = sourceBlob[0];
+    }
+    const objectUrl = URL.createObjectURL(sourceBlob);
+    originalImg.src = objectUrl;
+    progressFill.style.width = '60%';
+
+    const img = await loadImage(objectUrl);
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    if (targetFormat.value === 'image/jpeg') { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+    ctx.drawImage(img, 0, 0);
+
+    const quality = targetFormat.value === 'image/png' ? undefined : parseFloat(qualityInput.value);
+    const outBlob = await new Promise(res => canvas.toBlob(res, targetFormat.value, quality));
+    const outUrl = URL.createObjectURL(outBlob);
+    resultImg.src = outUrl;
+    resultImg.style.display = 'inline-block';
+
+    const ext = targetFormat.value.split('/')[1];
+    const outName = file.name.replace(/\.[^.]+$/, '') + '.' + ext;
+    statusSpan.innerHTML = '';
+    const a = document.createElement('a');
+    a.href = outUrl; a.download = outName; a.textContent = 'download'; a.style.color = 'var(--teal)';
+    statusSpan.appendChild(a);
+    statusLine.textContent = 'Done — download below or from the list.';
+    progressFill.style.width = '100%';
+    setTimeout(() => { progressTrack.style.display = 'none'; }, 400);
+  } catch (err) {
+    console.error(err);
+    statusSpan.textContent = 'failed';
+    statusLine.textContent = 'Couldn’t convert ' + escapeHtml(file.name) + ' — try a different file or browser.';
+    progressTrack.style.display = 'none';
+  }
+}
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+</script>
+</body>
+</html>
