@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remove Background from an Image — Free, In Your Browser | The Convergence</title>
+<meta name="description" content="Remove the background from any photo for free. Runs entirely in your browser using AI — no upload, no account, no watermark. Download a transparent PNG in seconds.">
+<meta property="og:title" content="Remove Background from an Image — Free, In Your Browser">
+<meta property="og:description" content="Remove the background from any photo for free. Runs entirely in your browser using AI — no upload, no account, no watermark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theconvergencehub.com/remove-background.html">
+<meta property="og:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<meta property="og:site_name" content="The Convergence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Remove Background from an Image — Free, In Your Browser">
+<meta name="twitter:description" content="Remove the background from any photo for free. Runs entirely in your browser using AI — no upload, no account, no watermark.">
+<meta name="twitter:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<link rel="stylesheet" href="../shared/styles.css">
+<link rel="icon" type="image/png" href="https://theconvergencehub.com/favicon.png">
+<link rel="canonical" href="https://theconvergencehub.com/remove-background.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Background Remover",
+  "applicationCategory": "PhotoEditingApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "description": "Remove the background from any photo for free. Runs entirely in your browser using AI — no upload, no account, no watermark.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "The Convergence" },
+  "url": "https://theconvergencehub.com/remove-background.html"
+}
+</script>
+
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="wrap" id="main" role="main">
+  <nav class="nav">
+    <a class="brand" href="https://theconvergencehub.com/">
+      <svg class="brand-mark" viewBox="0 0 24 24"><path d="M2 18 L9 11 L14 15 L22 5" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/><path d="M2 6 L9 12 L14 9 L22 17" fill="none" stroke="#3ED6C5" stroke-width="2" stroke-linecap="round"/></svg>
+      The Convergence
+    </a>
+    <div class="nav-links">
+      <a href="https://theconvergencehub.com/sponsors.html">Sponsors</a>
+      <select class="planet-jump" onchange="if(this.value) window.location.href=this.value">
+        <option value="">Jump to a planet…</option>
+        <option value="/ai-and-robotics.html">AI &amp; Robotics</option>
+        <option value="/health.html">Health &amp; Wellness</option>
+        <option value="/sports.html">Sports</option>
+        <option value="/entertainment-movies-tv.html">Entertainment</option>
+        <option value="/breaking-news.html">Breaking News</option>
+        <option value="/finance-investing.html">Finance &amp; Investing</option>
+        <option value="/gaming.html">Gaming</option>
+        <option value="/automotive.html">Automotive</option>
+        <option value="/shopping.html">Shopping</option>
+        <option value="/business.html">Business</option>
+        <option value="/archive.html">Archive</option>
+        <option value="/real-estate-housing.html">Real Estate &amp; Housing</option>
+        <option value="/true-crime.html">True Crime</option>
+        <option value="/natural-medicine.html">Alternative &amp; Natural Medicine</option>
+        <option value="/nanotechnology.html">Nanotechnology</option>
+        <option value="/travel.html">Travel</option>
+      </select>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="breadcrumb"><a href="https://theconvergencehub.com/">Home</a> / <a href="https://theconvergencehub.com/ai-and-robotics.html">AI &amp; Robotics</a> / <a href="https://theconvergencehub.com/ai-toolkit.html">AI Toolkit</a> / Remove Background</div>
+    <h1 style="font-size: 2rem;">Remove the background from a photo — free</h1>
+    <p class="dek">Drop in a photo, get back a transparent PNG in seconds. No upload to any server, no account, no watermark — the AI model runs right in your browser.</p>
+  </header>
+
+  <div class="tool-shell">
+    <div class="drop-zone" id="drop-zone">
+      <p class="drop-title">Drop an image here, or click to choose one</p>
+      <p class="drop-sub">JPG, PNG, or WebP · processed entirely on your device · pick several at once for batch mode</p>
+      <input type="file" id="file-input" accept="image/png, image/jpeg, image/webp" multiple>
+    </div>
+
+    <ul class="tool-file-list" id="file-list" style="display:none;"></ul>
+    <div id="pricing-banner"></div>
+
+    <div class="progress-track" id="progress-track" style="display:none;"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="status-line" id="status-line"></div>
+
+    <div class="preview-grid" id="preview-grid" style="display:none;">
+      <div class="preview-pane">
+        <div class="label">Original</div>
+        <img id="original-img" alt="Original photo">
+      </div>
+      <div class="preview-pane">
+        <div class="label">Background removed</div>
+        <img id="result-img" class="checkerboard" alt="Photo with background removed" style="display:none;">
+      </div>
+    </div>
+
+    <div class="tool-actions" id="tool-actions" style="display:none;">
+      <button class="tool-btn" id="download-btn">Download PNG</button>
+      <button class="tool-btn secondary" id="reset-btn">Try another photo</button>
+    </div>
+
+    <div class="privacy-note">
+      <span>🔒</span>
+      <span>Your photo never leaves your device. This tool downloads a small AI model to your browser and runs it locally — nothing is uploaded, stored, or seen by us.</span>
+    </div>
+  </div>
+
+  <article class="body" style="margin-top: 40px;">
+    <h2>Why this exists</h2>
+    <p>Removing a background used to mean opening Photoshop or paying per-image on a site that uploads your photo to a server somewhere. This does the same job for free, using an open-source AI model that runs directly on your device — good for product photos, profile pictures, thumbnails, or just cutting yourself out of a picture.</p>
+    <div class="answer-box"><strong>Good to know:</strong> the first run in a browser tab downloads the AI model (a one-time download per visit), so the very first image takes a bit longer to process. After that, it's fast.</div>
+  </article>
+
+  <footer style="margin-top: 40px;">
+    THE CONVERGENCE · theconvergencehub.com · <a href="https://theconvergencehub.com/about.html" style="color: var(--slate);">About</a> · <a href="https://theconvergencehub.com/privacy-policy.html" style="color: var(--slate);">Privacy</a> · <a href="https://theconvergencehub.com/terms-of-service.html" style="color: var(--slate);">Terms</a> · <a href="https://www.youtube.com/@THECONVERGENCEHUB" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">YouTube</a> · <a href="https://www.tiktok.com/@theconvergencehub" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">TikTok</a> · <a href="https://www.facebook.com/profile.php?id=61593516752054" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">Facebook</a>
+  </footer>
+</div>
+
+<script src="../shared/toolkit-access.js"></script>
+<script type="module">
+import { removeBackground } from "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.7.0/+esm";
+
+const TOOL_SLUG = 'remove-background';
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const fileListEl = document.getElementById('file-list');
+const previewGrid = document.getElementById('preview-grid');
+const originalImg = document.getElementById('original-img');
+const resultImg = document.getElementById('result-img');
+const toolActions = document.getElementById('tool-actions');
+const statusLine = document.getElementById('status-line');
+const progressTrack = document.getElementById('progress-track');
+const progressFill = document.getElementById('progress-fill');
+const downloadBtn = document.getElementById('download-btn');
+const resetBtn = document.getElementById('reset-btn');
+const pricingBannerEl = document.getElementById('pricing-banner');
+
+let lastResultBlobUrl = null;
+let lastResultName = 'background-removed.png';
+
+renderBanner();
+function renderBanner() {
+  toolkitRenderPricingBanner(pricingBannerEl, TOOL_SLUG, 'Remove Background', renderBanner);
+}
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files && e.dataTransfer.files.length) handleFiles([...e.dataTransfer.files]);
+});
+fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFiles([...e.target.files]); });
+
+resetBtn.addEventListener('click', () => {
+  previewGrid.style.display = 'none';
+  toolActions.style.display = 'none';
+  resultImg.style.display = 'none';
+  fileListEl.style.display = 'none';
+  fileListEl.innerHTML = '';
+  statusLine.textContent = '';
+  progressTrack.style.display = 'none';
+  fileInput.value = '';
+});
+
+downloadBtn.addEventListener('click', () => {
+  if (!lastResultBlobUrl) return;
+  const a = document.createElement('a');
+  a.href = lastResultBlobUrl;
+  a.download = lastResultName;
+  a.click();
+});
+
+async function handleFiles(files) {
+  const images = files.filter(f => f.type.startsWith('image/'));
+  if (!images.length) {
+    statusLine.textContent = 'That doesn’t look like an image — try a JPG, PNG, or WebP.';
+    return;
+  }
+
+  fileListEl.style.display = 'block';
+  fileListEl.innerHTML = '';
+  const unlocked = toolkitHasAccess(TOOL_SLUG);
+  const rows = images.map((file, i) => {
+    const li = document.createElement('li');
+    const locked = i > 0 && !unlocked;
+    li.innerHTML = '<span class="file-name">' + escapeHtml(file.name) + '</span><span class="file-status">' +
+      (locked ? '<span class="pro-lock-note">🔒 batch is a Pro extra</span>' : 'waiting…') + '</span>';
+    fileListEl.appendChild(li);
+    return { file, li, locked };
+  });
+
+  for (const row of rows) {
+    if (row.locked) continue;
+    await processOne(row.file, row.li);
+  }
+  renderBanner();
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+async function processOne(file, listItemEl) {
+  const statusSpan = listItemEl.querySelector('.file-status');
+  previewGrid.style.display = 'grid';
+  toolActions.style.display = 'none';
+  resultImg.style.display = 'none';
+  originalImg.src = URL.createObjectURL(file);
+  progressTrack.style.display = 'block';
+  progressFill.style.width = '0%';
+  statusSpan.textContent = 'processing…';
+  statusLine.textContent = 'Loading the AI model…';
+
+  try {
+    const resultBlob = await removeBackground(file, {
+      progress: (key, current, total) => {
+        const pct = total ? Math.round((current / total) * 100) : 0;
+        progressFill.style.width = pct + '%';
+        statusLine.textContent = key && key.includes('fetch')
+          ? `Downloading model… ${pct}%`
+          : `Processing ${escapeHtml(file.name)}… ${pct}%`;
+      }
+    });
+    if (lastResultBlobUrl) URL.revokeObjectURL(lastResultBlobUrl);
+    lastResultBlobUrl = URL.createObjectURL(resultBlob);
+    lastResultName = file.name.replace(/\.[^.]+$/, '') + '-background-removed.png';
+    resultImg.src = lastResultBlobUrl;
+    resultImg.style.display = 'inline-block';
+    toolActions.style.display = 'flex';
+    statusLine.textContent = 'Done — download it below.';
+    progressTrack.style.display = 'none';
+    const a = document.createElement('a');
+    a.href = lastResultBlobUrl;
+    a.download = lastResultName;
+    a.textContent = 'download';
+    a.style.color = 'var(--teal)';
+    statusSpan.innerHTML = '';
+    statusSpan.appendChild(a);
+  } catch (err) {
+    console.error(err);
+    statusSpan.textContent = 'failed';
+    statusLine.textContent = 'Something went wrong on ' + escapeHtml(file.name) + '. Try a different photo, or a different browser (this needs a fairly modern one).';
+    progressTrack.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>
