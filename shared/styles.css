@@ -1,0 +1,206 @@
+/* Trimmed stylesheet for the standalone ai-toolkit repo — the subset of
+ * theconvergencehub.com's site CSS actually used by the 5 tool pages plus
+ * the shared nav/header chrome. The full site stylesheet has a lot more
+ * (other page templates, decorative backgrounds) not needed here. */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #0E1526;
+  --ink-raised: #141C33;
+  --teal: #3ED6C5;
+  --brass: #C9A24B;
+  --paper: #EDEEF0;
+  --slate: #8792A6;
+  --hairline: rgba(237, 238, 240, 0.12);
+  --max: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--paper);
+}
+.brand-mark {
+  width: 22px; height: 22px;
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-size: 0.9rem;
+  color: var(--slate);
+}
+.nav-links a { text-decoration: none; }
+.nav-links a:hover { color: var(--teal); }
+
+@media (max-width: 640px) {
+  .nav {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+  .planet-jump {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    box-sizing: border-box;
+  }
+}
+
+/* Article page */
+.article-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--hairline);
+}
+.breadcrumb {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--slate);
+  margin-bottom: 20px;
+}
+.breadcrumb a { color: var(--slate); text-decoration: none; }
+.breadcrumb a:hover { color: var(--teal); }
+.article-header h1 {
+  font-family: 'Newsreader', serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  line-height: 1.14;
+  margin: 0 0 18px;
+}
+.article-header .dek {
+  font-size: 1.05rem;
+  color: var(--slate);
+  max-width: 62ch;
+}
+.article-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--brass);
+  margin-top: 22px;
+}
+article.body {
+  max-width: 72ch;
+  padding: 48px 0;
+  font-size: 1.05rem;
+}
+article.body h2 {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-top: 44px;
+}
+article.body p { color: #D7D9DE; }
+.answer-box {
+  background: var(--ink-raised);
+  border-left: 3px solid var(--teal);
+  padding: 20px 24px;
+  margin: 28px 0;
+  font-size: 1rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--teal);
+  color: var(--ink);
+  padding: 10px 16px;
+  z-index: 100;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* ===== Shared: Free Tools (AI Toolkit interactive tools) ===== */
+.tool-shell { background: var(--ink-raised); border: 1px solid var(--hairline); border-radius: 10px; padding: 28px; margin-top: 24px; }
+.drop-zone { border: 2px dashed var(--hairline); border-radius: 8px; padding: 48px 24px; text-align: center; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--teal); background: rgba(62,214,197,0.06); }
+.drop-zone p { margin: 6px 0; }
+.drop-zone .drop-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.05rem; color: var(--paper); }
+.drop-zone .drop-sub { color: var(--slate); font-size: 0.85rem; }
+.tool-shell input[type="file"] { display: none; }
+.preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+@media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
+.preview-pane { text-align: center; }
+.preview-pane .label { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate); margin-bottom: 8px; }
+.preview-pane img, .preview-pane canvas { max-width: 100%; max-height: 360px; border-radius: 6px; border: 1px solid var(--hairline); }
+.checkerboard { background-image: linear-gradient(45deg, #2a3350 25%, transparent 25%), linear-gradient(-45deg, #2a3350 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2a3350 75%), linear-gradient(-45deg, transparent 75%, #2a3350 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
+.tool-btn { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem; background: var(--teal); color: var(--ink); border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; }
+.tool-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.tool-btn.secondary { background: transparent; color: var(--teal); border: 1px solid var(--teal); }
+.tool-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+.status-line { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--slate); margin-top: 16px; min-height: 1.2em; }
+.privacy-note { display: flex; gap: 10px; align-items: flex-start; background: var(--ink-raised); border-left: 3px solid var(--teal); padding: 14px 16px; border-radius: 4px; margin-top: 20px; font-size: 0.88rem; color: var(--slate); }
+.progress-track { width: 100%; max-width: 320px; margin: 12px auto 0; height: 6px; border-radius: 3px; background: var(--hairline); overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: var(--teal); transition: width 0.2s; }
+.tool-file-list { list-style: none; padding: 0; margin: 16px 0 0; }
+.tool-file-list li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; background: var(--ink); border: 1px solid var(--hairline); border-radius: 6px; margin-bottom: 8px; font-size: 0.88rem; }
+.tool-file-list .file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tool-file-list .file-remove { background: none; border: none; color: var(--slate); cursor: pointer; font-size: 1rem; padding: 0 4px; }
+.tool-file-list .file-remove:hover { color: var(--brass); }
+.tool-field-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: center; margin: 16px 0; }
+.tool-field-row label { font-size: 0.85rem; color: var(--slate); display: flex; align-items: center; gap: 6px; }
+.tool-field-row input[type="number"], .tool-field-row input[type="text"], .tool-field-row select, .tool-field-row input[type="color"] { background: var(--ink); border: 1px solid var(--hairline); color: var(--paper); border-radius: 4px; padding: 7px 10px; font-family: 'Space Grotesk', sans-serif; }
+.tool-field-row input[type="range"] { accent-color: var(--teal); }
+
+/* Pro / pricing structure, shared across all Free Tools pages */
+.pricing-banner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: rgba(201,162,75,0.08); border: 1px solid rgba(201,162,75,0.35); border-radius: 8px; padding: 14px 18px; margin-top: 20px; }
+.pricing-banner .pricing-copy { font-size: 0.88rem; color: var(--paper); }
+.pricing-banner .pricing-copy strong { color: var(--brass); }
+.pricing-banner .pricing-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.unlock-btn { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; text-decoration: none; padding: 9px 16px; border-radius: 5px; border: 1px solid var(--brass); color: var(--brass); white-space: nowrap; }
+.unlock-btn:hover { background: rgba(201,162,75,0.14); }
+.unlock-btn.primary { background: var(--brass); color: var(--ink); }
+.pricing-banner.unlocked { border-color: var(--teal); background: rgba(62,214,197,0.08); }
+.pricing-banner.unlocked .pricing-copy strong { color: var(--teal); }
+.pro-lock-note { font-size: 0.78rem; color: var(--brass); margin-top: 6px; }
+.pro-lock-note a { color: var(--brass); }
