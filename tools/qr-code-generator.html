@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator — Free, In Your Browser | The Convergence</title>
+<meta name="description" content="Turn any link or text into a QR code and download it as a PNG. Free, no account, no watermark — generated entirely in your browser.">
+<meta property="og:title" content="QR Code Generator — Free, In Your Browser">
+<meta property="og:description" content="Turn any link or text into a QR code and download it as a PNG. Free, no account, no watermark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theconvergencehub.com/qr-code-generator.html">
+<meta property="og:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<meta property="og:site_name" content="The Convergence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QR Code Generator — Free, In Your Browser">
+<meta name="twitter:description" content="Turn any link or text into a QR code and download it as a PNG. Free, no account, no watermark.">
+<meta name="twitter:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<link rel="stylesheet" href="../shared/styles.css">
+<link rel="icon" type="image/png" href="https://theconvergencehub.com/favicon.png">
+<link rel="canonical" href="https://theconvergencehub.com/qr-code-generator.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR Code Generator",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "description": "Turn any link or text into a QR code and download it as a PNG. Free, no account, no watermark.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "The Convergence" },
+  "url": "https://theconvergencehub.com/qr-code-generator.html"
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="wrap" id="main" role="main">
+  <nav class="nav">
+    <a class="brand" href="https://theconvergencehub.com/">
+      <svg class="brand-mark" viewBox="0 0 24 24"><path d="M2 18 L9 11 L14 15 L22 5" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/><path d="M2 6 L9 12 L14 9 L22 17" fill="none" stroke="#3ED6C5" stroke-width="2" stroke-linecap="round"/></svg>
+      The Convergence
+    </a>
+    <div class="nav-links">
+      <a href="https://theconvergencehub.com/sponsors.html">Sponsors</a>
+      <select class="planet-jump" onchange="if(this.value) window.location.href=this.value">
+        <option value="">Jump to a planet…</option>
+        <option value="/ai-and-robotics.html">AI &amp; Robotics</option>
+        <option value="/health.html">Health &amp; Wellness</option>
+        <option value="/sports.html">Sports</option>
+        <option value="/entertainment-movies-tv.html">Entertainment</option>
+        <option value="/breaking-news.html">Breaking News</option>
+        <option value="/finance-investing.html">Finance &amp; Investing</option>
+        <option value="/gaming.html">Gaming</option>
+        <option value="/automotive.html">Automotive</option>
+        <option value="/shopping.html">Shopping</option>
+        <option value="/business.html">Business</option>
+        <option value="/archive.html">Archive</option>
+        <option value="/real-estate-housing.html">Real Estate &amp; Housing</option>
+        <option value="/true-crime.html">True Crime</option>
+        <option value="/natural-medicine.html">Alternative &amp; Natural Medicine</option>
+        <option value="/nanotechnology.html">Nanotechnology</option>
+        <option value="/travel.html">Travel</option>
+      </select>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="breadcrumb"><a href="https://theconvergencehub.com/">Home</a> / <a href="https://theconvergencehub.com/ai-and-robotics.html">AI &amp; Robotics</a> / <a href="https://theconvergencehub.com/ai-toolkit.html">AI Toolkit</a> / QR Code Generator</div>
+    <h1 style="font-size: 2rem;">QR code generator — free</h1>
+    <p class="dek">Paste a link or type any text, get a QR code back instantly. No account, no watermark.</p>
+  </header>
+
+  <div class="tool-shell">
+    <div class="tool-field-row" style="flex-direction: column; align-items: stretch;">
+      <label style="width:100%;">Link or text
+        <input type="text" id="qr-text" placeholder="https://theconvergencehub.com" style="width:100%; margin-top:6px;">
+      </label>
+    </div>
+
+    <div class="tool-field-row">
+      <label>Foreground <input type="color" id="fg-color" value="#0E1526" disabled></label>
+      <label>Background <input type="color" id="bg-color" value="#EDEEF0" disabled></label>
+      <label>Export size
+        <select id="export-size" disabled>
+          <option value="300">300px (free)</option>
+          <option value="1024">1024px (Pro)</option>
+        </select>
+      </label>
+    </div>
+    <p class="pro-lock-note" id="color-lock-note" style="text-align:center;">🔒 Custom colors and a 1024px export are Pro extras — the standard black-on-white 300px QR is always free.</p>
+
+    <div class="tool-actions" style="margin-top:16px;">
+      <button class="tool-btn" id="generate-btn">Generate QR Code</button>
+    </div>
+
+    <div id="pricing-banner"></div>
+    <div class="status-line" id="status-line"></div>
+
+    <div class="preview-grid" id="preview-grid" style="display:none; grid-template-columns: 1fr;">
+      <div class="preview-pane">
+        <div class="label">Your QR Code</div>
+        <canvas id="qr-canvas" style="background:#fff; border-radius:6px;"></canvas>
+      </div>
+    </div>
+
+    <div class="tool-actions" id="tool-actions" style="display:none;">
+      <button class="tool-btn" id="download-btn">Download PNG</button>
+    </div>
+  </div>
+
+  <article class="body" style="margin-top: 40px;">
+    <h2>Why this exists</h2>
+    <p>Menus, business cards, flyers, Wi-Fi sharing — a QR code is the fastest way to hand someone a link without them typing it. This generates one on the spot, entirely in your browser, and lets you download it as a PNG to print or share.</p>
+  </article>
+
+  <footer style="margin-top: 40px;">
+    THE CONVERGENCE · theconvergencehub.com · <a href="https://theconvergencehub.com/about.html" style="color: var(--slate);">About</a> · <a href="https://theconvergencehub.com/privacy-policy.html" style="color: var(--slate);">Privacy</a> · <a href="https://theconvergencehub.com/terms-of-service.html" style="color: var(--slate);">Terms</a> · <a href="https://www.youtube.com/@THECONVERGENCEHUB" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">YouTube</a> · <a href="https://www.tiktok.com/@theconvergencehub" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">TikTok</a> · <a href="https://www.facebook.com/profile.php?id=61593516752054" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">Facebook</a>
+  </footer>
+</div>
+
+<script src="../shared/toolkit-access.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script>
+const TOOL_SLUG = 'qr-code-generator';
+const qrText = document.getElementById('qr-text');
+const fgColor = document.getElementById('fg-color');
+const bgColor = document.getElementById('bg-color');
+const exportSize = document.getElementById('export-size');
+const colorLockNote = document.getElementById('color-lock-note');
+const generateBtn = document.getElementById('generate-btn');
+const pricingBannerEl = document.getElementById('pricing-banner');
+const statusLine = document.getElementById('status-line');
+const previewGrid = document.getElementById('preview-grid');
+const canvas = document.getElementById('qr-canvas');
+const toolActions = document.getElementById('tool-actions');
+const downloadBtn = document.getElementById('download-btn');
+
+function refreshLockState() {
+  const unlocked = toolkitHasAccess(TOOL_SLUG);
+  fgColor.disabled = !unlocked;
+  bgColor.disabled = !unlocked;
+  exportSize.disabled = !unlocked;
+  if (!unlocked) { exportSize.value = '300'; fgColor.value = '#0E1526'; bgColor.value = '#ffffff'; }
+  colorLockNote.style.display = unlocked ? 'none' : 'block';
+}
+refreshLockState();
+
+renderBanner();
+function renderBanner() { toolkitRenderPricingBanner(pricingBannerEl, TOOL_SLUG, 'QR Code Generator', () => { renderBanner(); refreshLockState(); }); }
+
+generateBtn.addEventListener('click', () => {
+  const text = qrText.value.trim();
+  if (!text) { statusLine.textContent = 'Type a link or some text first.'; return; }
+  const size = parseInt(exportSize.value, 10) || 300;
+  previewGrid.style.display = 'grid';
+  QRCode.toCanvas(canvas, text, {
+    width: size,
+    margin: 2,
+    color: { dark: fgColor.value || '#0E1526', light: bgColor.value || '#ffffff' }
+  }, function (err) {
+    if (err) {
+      console.error(err);
+      statusLine.textContent = 'Couldn’t generate that QR code — try shorter text.';
+      toolActions.style.display = 'none';
+      return;
+    }
+    statusLine.textContent = 'Done — download it below.';
+    toolActions.style.display = 'flex';
+  });
+});
+
+downloadBtn.addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = 'qr-code.png';
+  a.click();
+});
+</script>
+</body>
+</html>
