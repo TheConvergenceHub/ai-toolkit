@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resize & Compress an Image — Free, In Your Browser | The Convergence</title>
+<meta name="description" content="Resize or compress a photo so it's small enough to upload or email. Free, no upload to any server — runs entirely in your browser.">
+<meta property="og:title" content="Resize & Compress an Image — Free, In Your Browser">
+<meta property="og:description" content="Resize or compress a photo so it's small enough to upload or email. Free, no upload to any server.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theconvergencehub.com/resize-image.html">
+<meta property="og:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<meta property="og:site_name" content="The Convergence">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Resize & Compress an Image — Free, In Your Browser">
+<meta name="twitter:description" content="Resize or compress a photo so it's small enough to upload or email. Free, no upload to any server.">
+<meta name="twitter:image" content="https://theconvergencehub.com/cosmic-bg-v2.jpg">
+<link rel="stylesheet" href="../shared/styles.css">
+<link rel="icon" type="image/png" href="https://theconvergencehub.com/favicon.png">
+<link rel="canonical" href="https://theconvergencehub.com/resize-image.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Resize & Compress Image",
+  "applicationCategory": "PhotoEditingApplication",
+  "operatingSystem": "Any (runs in browser)",
+  "description": "Resize or compress a photo so it's small enough to upload or email. Free, no upload to any server.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "The Convergence" },
+  "url": "https://theconvergencehub.com/resize-image.html"
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="wrap" id="main" role="main">
+  <nav class="nav">
+    <a class="brand" href="https://theconvergencehub.com/">
+      <svg class="brand-mark" viewBox="0 0 24 24"><path d="M2 18 L9 11 L14 15 L22 5" fill="none" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/><path d="M2 6 L9 12 L14 9 L22 17" fill="none" stroke="#3ED6C5" stroke-width="2" stroke-linecap="round"/></svg>
+      The Convergence
+    </a>
+    <div class="nav-links">
+      <a href="https://theconvergencehub.com/sponsors.html">Sponsors</a>
+      <select class="planet-jump" onchange="if(this.value) window.location.href=this.value">
+        <option value="">Jump to a planet…</option>
+        <option value="/ai-and-robotics.html">AI &amp; Robotics</option>
+        <option value="/health.html">Health &amp; Wellness</option>
+        <option value="/sports.html">Sports</option>
+        <option value="/entertainment-movies-tv.html">Entertainment</option>
+        <option value="/breaking-news.html">Breaking News</option>
+        <option value="/finance-investing.html">Finance &amp; Investing</option>
+        <option value="/gaming.html">Gaming</option>
+        <option value="/automotive.html">Automotive</option>
+        <option value="/shopping.html">Shopping</option>
+        <option value="/business.html">Business</option>
+        <option value="/archive.html">Archive</option>
+        <option value="/real-estate-housing.html">Real Estate &amp; Housing</option>
+        <option value="/true-crime.html">True Crime</option>
+        <option value="/natural-medicine.html">Alternative &amp; Natural Medicine</option>
+        <option value="/nanotechnology.html">Nanotechnology</option>
+        <option value="/travel.html">Travel</option>
+      </select>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="breadcrumb"><a href="https://theconvergencehub.com/">Home</a> / <a href="https://theconvergencehub.com/ai-and-robotics.html">AI &amp; Robotics</a> / <a href="https://theconvergencehub.com/ai-toolkit.html">AI Toolkit</a> / Resize &amp; Compress Image</div>
+    <h1 style="font-size: 2rem;">Resize &amp; compress an image — free</h1>
+    <p class="dek">Shrink a photo so it's small enough to upload or email. No upload to any server, no account, no watermark.</p>
+  </header>
+
+  <div class="tool-shell">
+    <div class="tool-field-row">
+      <label>Size:
+        <select id="preset">
+          <option value="480">Small (480px)</option>
+          <option value="1024" selected>Medium (1024px)</option>
+          <option value="1920">Large (1920px)</option>
+          <option value="custom">Custom (Pro)</option>
+        </select>
+      </label>
+      <label id="custom-w-row" style="display:none;">Width <input type="number" id="custom-w" min="1" max="8000" placeholder="px" disabled></label>
+      <label id="custom-h-row" style="display:none;">Height <input type="number" id="custom-h" min="1" max="8000" placeholder="px" disabled></label>
+      <label>Quality: <input type="range" id="quality" min="0.4" max="1" step="0.05" value="0.85"> <span id="quality-val">85%</span></label>
+    </div>
+    <p class="pro-lock-note" id="custom-lock-note" style="text-align:center; display:none;">🔒 Exact custom dimensions are a Pro extra — presets above stay free.</p>
+
+    <div class="drop-zone" id="drop-zone">
+      <p class="drop-title">Drop image(s) here, or click to choose</p>
+      <p class="drop-sub">JPG, PNG, or WebP · processed entirely on your device</p>
+      <input type="file" id="file-input" accept="image/png, image/jpeg, image/webp" multiple>
+    </div>
+
+    <ul class="tool-file-list" id="file-list" style="display:none;"></ul>
+    <div id="pricing-banner"></div>
+    <div class="status-line" id="status-line"></div>
+    <div class="progress-track" id="progress-track" style="display:none;"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <div class="preview-grid" id="preview-grid" style="display:none;">
+      <div class="preview-pane"><div class="label">Original</div><img id="original-img" alt="Original"></div>
+      <div class="preview-pane"><div class="label">Resized</div><img id="result-img" alt="Resized" style="display:none;"></div>
+    </div>
+
+    <div class="privacy-note">
+      <span>🔒</span>
+      <span>Your images never leave your device. Resizing happens entirely in your browser.</span>
+    </div>
+  </div>
+
+  <footer style="margin-top: 40px;">
+    THE CONVERGENCE · theconvergencehub.com · <a href="https://theconvergencehub.com/about.html" style="color: var(--slate);">About</a> · <a href="https://theconvergencehub.com/privacy-policy.html" style="color: var(--slate);">Privacy</a> · <a href="https://theconvergencehub.com/terms-of-service.html" style="color: var(--slate);">Terms</a> · <a href="https://www.youtube.com/@THECONVERGENCEHUB" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">YouTube</a> · <a href="https://www.tiktok.com/@theconvergencehub" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">TikTok</a> · <a href="https://www.facebook.com/profile.php?id=61593516752054" target="_blank" rel="noopener noreferrer" style="color: var(--slate);">Facebook</a>
+  </footer>
+</div>
+
+<script src="../shared/toolkit-access.js"></script>
+<script>
+const TOOL_SLUG = 'resize-image';
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const fileListEl = document.getElementById('file-list');
+const pricingBannerEl = document.getElementById('pricing-banner');
+const statusLine = document.getElementById('status-line');
+const progressTrack = document.getElementById('progress-track');
+const progressFill = document.getElementById('progress-fill');
+const previewGrid = document.getElementById('preview-grid');
+const originalImg = document.getElementById('original-img');
+const resultImg = document.getElementById('result-img');
+const presetSelect = document.getElementById('preset');
+const customWRow = document.getElementById('custom-w-row');
+const customHRow = document.getElementById('custom-h-row');
+const customW = document.getElementById('custom-w');
+const customH = document.getElementById('custom-h');
+const customLockNote = document.getElementById('custom-lock-note');
+const qualityInput = document.getElementById('quality');
+const qualityVal = document.getElementById('quality-val');
+
+qualityInput.addEventListener('input', () => { qualityVal.textContent = Math.round(qualityInput.value * 100) + '%'; });
+
+function refreshCustomState() {
+  const unlocked = toolkitHasAccess(TOOL_SLUG);
+  const isCustom = presetSelect.value === 'custom';
+  customWRow.style.display = isCustom ? 'flex' : 'none';
+  customHRow.style.display = isCustom ? 'flex' : 'none';
+  customLockNote.style.display = isCustom && !unlocked ? 'block' : 'none';
+  customW.disabled = !unlocked;
+  customH.disabled = !unlocked;
+  if (isCustom && !unlocked) {
+    presetSelect.value = '1024'; // fall back until unlocked
+    customWRow.style.display = 'none';
+    customHRow.style.display = 'none';
+  }
+}
+presetSelect.addEventListener('change', refreshCustomState);
+refreshCustomState();
+
+renderBanner();
+function renderBanner() { toolkitRenderPricingBanner(pricingBannerEl, TOOL_SLUG, 'Resize & Compress Image', () => { renderBanner(); refreshCustomState(); }); }
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files.length) handleFiles([...e.dataTransfer.files]);
+});
+fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFiles([...e.target.files]); fileInput.value = ''; });
+
+function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+async function handleFiles(files) {
+  const images = files.filter(f => f.type.startsWith('image/'));
+  fileListEl.style.display = 'block';
+  fileListEl.innerHTML = '';
+  const unlocked = toolkitHasAccess(TOOL_SLUG);
+  const rows = images.map((file, i) => {
+    const li = document.createElement('li');
+    const locked = i > 0 && !unlocked;
+    li.innerHTML = '<span class="file-name">' + escapeHtml(file.name) + '</span><span class="file-status">' +
+      (locked ? '<span class="pro-lock-note">🔒 batch is a Pro extra</span>' : 'waiting…') + '</span>';
+    fileListEl.appendChild(li);
+    return { file, li, locked };
+  });
+  for (const row of rows) {
+    if (row.locked) continue;
+    await resizeOne(row.file, row.li);
+  }
+  renderBanner();
+}
+
+function targetDims(naturalW, naturalH) {
+  if (presetSelect.value === 'custom' && toolkitHasAccess(TOOL_SLUG)) {
+    return { w: parseInt(customW.value, 10) || naturalW, h: parseInt(customH.value, 10) || naturalH };
+  }
+  const longest = parseInt(presetSelect.value, 10) || 1024;
+  if (naturalW <= longest && naturalH <= longest) return { w: naturalW, h: naturalH };
+  if (naturalW >= naturalH) {
+    return { w: longest, h: Math.round(naturalH * (longest / naturalW)) };
+  }
+  return { w: Math.round(naturalW * (longest / naturalH)), h: longest };
+}
+
+async function resizeOne(file, listItemEl) {
+  const statusSpan = listItemEl.querySelector('.file-status');
+  statusSpan.textContent = 'resizing…';
+  previewGrid.style.display = 'grid';
+  resultImg.style.display = 'none';
+  progressTrack.style.display = 'block';
+  progressFill.style.width = '30%';
+  statusLine.textContent = 'Resizing ' + escapeHtml(file.name) + '…';
+  try {
+    const objectUrl = URL.createObjectURL(file);
+    originalImg.src = objectUrl;
+    const img = await loadImage(objectUrl);
+    const dims = targetDims(img.naturalWidth, img.naturalHeight);
+    const canvas = document.createElement('canvas');
+    canvas.width = dims.w; canvas.height = dims.h;
+    const ctx = canvas.getContext('2d');
+    const mime = file.type === 'image/png' && presetSelect.value !== 'custom' ? 'image/png' : (file.type || 'image/jpeg');
+    if (mime === 'image/jpeg') { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, dims.w, dims.h); }
+    ctx.drawImage(img, 0, 0, dims.w, dims.h);
+    const outBlob = await new Promise(res => canvas.toBlob(res, mime, parseFloat(qualityInput.value)));
+    const outUrl = URL.createObjectURL(outBlob);
+    resultImg.src = outUrl;
+    resultImg.style.display = 'inline-block';
+    const kb = Math.round(outBlob.size / 1024);
+    const outName = file.name.replace(/\.[^.]+$/, '') + '-resized.' + (mime.split('/')[1] || 'jpg');
+    statusSpan.innerHTML = '';
+    const a = document.createElement('a');
+    a.href = outUrl; a.download = outName; a.textContent = 'download (' + kb + ' KB)'; a.style.color = 'var(--teal)';
+    statusSpan.appendChild(a);
+    statusLine.textContent = 'Done — ' + dims.w + '×' + dims.h + ', ' + kb + ' KB.';
+    progressFill.style.width = '100%';
+    setTimeout(() => { progressTrack.style.display = 'none'; }, 400);
+  } catch (err) {
+    console.error(err);
+    statusSpan.textContent = 'failed';
+    statusLine.textContent = 'Couldn’t resize ' + escapeHtml(file.name) + '.';
+    progressTrack.style.display = 'none';
+  }
+}
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+</script>
+</body>
+</html>
